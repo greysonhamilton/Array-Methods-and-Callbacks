@@ -88,7 +88,7 @@ function getYears(cb1) {
 
     const years = info.map((year) => {
 
-        return {'Year': year.Year};
+        return year.Year;
     })
 
     return years;
@@ -109,6 +109,10 @@ function getWinners(cb1) {
 
         return win["Home Team Name"]
 
+    } else if (win["Home Team Goals"] === win["Away Team Goals"]) {
+
+        return win["Win conditions"]
+
     } else {
 
         return win["Away Team Name"]
@@ -128,11 +132,15 @@ Parameters:
  * callback function getYears
  */
 
-// function getWinnersByYear(/* code here */) {
+function getWinnersByYear(cb2, cb3) {
 
-// };
+    for (let i = 0; i < cb2.length; i++)
 
-// getWinnersByYear();
+    return `In ${cb2[i]}, ${cb3[i]} won the world cup!`
+
+}   getWinnersByYear(getWinners, getYears);
+
+    console.log(getWinnersByYear(getYears, getWinners));
 
 /* Task 6: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
