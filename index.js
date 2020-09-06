@@ -131,26 +131,36 @@ Parameters:
  * callback function getWinners
  * callback function getYears
  */
+const wonIn = [];
 
 function getWinnersByYear(cb2, cb3) {
 
-    for (let i = 0; i < cb2.length; i++)
+// In order for the function to reach the results of the call back function, the callback function must be called. Otherwise this function would not be able to reach inside of another function to pull the array.
+    
+    year = cb2(getFinals);
+    win = cb3(getFinals);
 
-    return `In ${cb2[i]}, ${cb3[i]} won the world cup!`
+// .forEach requires a function or element
+    year.forEach(function(time, team) {
+    
+    // In order to properly provide our indended result, the code must first be pushed into an array so that the entire array can be assessed.
+        wonIn.push(`In ${time}, ${win[team]} won the world cup!`);
 
-}   getWinnersByYear(getWinners, getYears);
+    });
 
-    console.log(getWinnersByYear(getYears, getWinners));
+    }   getWinnersByYear(getYears, getWinners);
+
+    console.log(wonIn);
 
 /* Task 6: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
-// function getAverageGoals(/* code here */) {
+function getAverageGoals(data) {
 
-//     /* code here */
+    /* code here */
 
-// };
+};
 
-// getAverageGoals();
+getAverageGoals();
 
 /// STRETCH 🥅 //
 
