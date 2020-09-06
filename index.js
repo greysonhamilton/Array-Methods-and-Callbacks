@@ -143,7 +143,7 @@ function getWinnersByYear(cb2, cb3) {
 // .forEach requires a function or element
     year.forEach(function(time, team) {
     
-    // In order to properly provide our indended result, the code must first be pushed into an array so that the entire array can be assessed.
+    // In order to properly provide our indended result, the code must first be pushed into an array so that the entire array can be assessed. When referencing more than one array, that array must have a parameter within the function of the .forEach method.
         wonIn.push(`In ${time}, ${win[team]} won the world cup!`);
 
     });
@@ -156,11 +156,22 @@ function getWinnersByYear(cb2, cb3) {
 
 function getAverageGoals(data) {
 
-    /* code here */
+    let homeAvg = data.reduce(function(avg, home) {
 
-};
+        return avg + home["Home Team Goals"];
+    
+    },0)/data.length;
 
-getAverageGoals();
+    let awayAvg = data.reduce(function(avg, away) {
+
+        return avg + away["Away Team Goals"];
+    }, 0)/data.length;
+
+    return `The average of the Home Team Goals is ${homeAvg}, while the average of the Away Team Goals is ${awayAvg}.`
+
+}   getAverageGoals(fifaData);
+
+    console.log(getAverageGoals(fifaData));
 
 /// STRETCH 🥅 //
 
